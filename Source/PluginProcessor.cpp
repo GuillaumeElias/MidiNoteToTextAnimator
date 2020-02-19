@@ -27,7 +27,6 @@ MidiNoteToTextAudioProcessor::MidiNoteToTextAudioProcessor()
         })
 #endif
 {
-  
 }
 
 //==============================================================================
@@ -108,15 +107,14 @@ void MidiNoteToTextAudioProcessor::changeProgramName (int index, const String& n
 //==============================================================================
 void MidiNoteToTextAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
 {
-    // Use this method as the place to do any pre-playback
-    // initialisation that you need..
+    Logger::outputDebugString("prepareToPlay");
+
+    reset();
 }
 
 //==============================================================================
 void MidiNoteToTextAudioProcessor::releaseResources()
 {
-    // When playback stops, you can use this as an opportunity to free up any
-    // spare memory, etc.
 }
 
 //==============================================================================
@@ -147,6 +145,9 @@ bool MidiNoteToTextAudioProcessor::isBusesLayoutSupported (const BusesLayout& la
 //==============================================================================
 void MidiNoteToTextAudioProcessor::processBlock (AudioBuffer<float>& buffer, MidiBuffer& midiMessages)
 {
+
+    midiReceiver.handleMidiMessage(midiMessages);
+
     ScopedNoDenormals noDenormals;
     auto totalNumInputChannels  = getTotalNumInputChannels();
     auto totalNumOutputChannels = getTotalNumOutputChannels();
@@ -155,7 +156,7 @@ void MidiNoteToTextAudioProcessor::processBlock (AudioBuffer<float>& buffer, Mid
         buffer.clear (i, 0, buffer.getNumSamples());
 
   
-    //nothing to do
+    //nothing to do for audio
 }
 
 //==============================================================================
