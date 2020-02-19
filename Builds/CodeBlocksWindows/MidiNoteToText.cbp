@@ -22,7 +22,7 @@
           <Add option="-DJUCER_CODEBLOCKS_WINDOWS_8F9AFD66=1"/>
           <Add option="-DJUCE_APP_VERSION=1.0.0"/>
           <Add option="-DJUCE_APP_VERSION_HEX=0x10000"/>
-          <Add option="-DJucePlugin_Build_VST=0"/>
+          <Add option="-DJucePlugin_Build_VST=1"/>
           <Add option="-DJucePlugin_Build_VST3=0"/>
           <Add option="-DJucePlugin_Build_AU=0"/>
           <Add option="-DJucePlugin_Build_AUv3=0"/>
@@ -37,6 +37,8 @@
           <Add option="-mstackrealign"/>
           <Add option="-g"/>
           <Add directory="."/>
+          <Add directory="C:/JUCE_5.4.7/modules/juce_audio_processors/format_types/VST3_SDK"/>
+          <Add directory="C:/VST_SDK/VST2_SDK"/>
           <Add directory="../../JuceLibraryCode"/>
           <Add directory="C:/JUCE_5.4.7/modules"/>
         </Compiler>
@@ -55,6 +57,60 @@
           <Add library="shlwapi"/>
           <Add library="rpcrt4"/>
           <Add library="opengl32"/>
+        </Linker>
+      </Target>
+      <Target title="VST | Debug">
+        <Option output="bin/Debug/MidiNoteToText.dll"
+                prefix_auto="0"
+                extension_auto="0"/>
+        <Option object_output="obj/Debug"/>
+        <Option type="3"/>
+        <Option compiler="gcc"/>
+        <Option external_deps="bin/Debug/MidiNoteToText.lib"/>
+        <Compiler>
+          <Add option="-D__MINGW__=1"/>
+          <Add option="-D__MINGW_EXTENSION="/>
+          <Add option="-DDEBUG=1"/>
+          <Add option="-D_DEBUG=1"/>
+          <Add option="-DJUCER_CODEBLOCKS_WINDOWS_8F9AFD66=1"/>
+          <Add option="-DJUCE_APP_VERSION=1.0.0"/>
+          <Add option="-DJUCE_APP_VERSION_HEX=0x10000"/>
+          <Add option="-DJucePlugin_Build_VST=1"/>
+          <Add option="-DJucePlugin_Build_VST3=0"/>
+          <Add option="-DJucePlugin_Build_AU=0"/>
+          <Add option="-DJucePlugin_Build_AUv3=0"/>
+          <Add option="-DJucePlugin_Build_RTAS=0"/>
+          <Add option="-DJucePlugin_Build_AAX=0"/>
+          <Add option="-DJucePlugin_Build_Standalone=0"/>
+          <Add option="-DJucePlugin_Build_Unity=0"/>
+          <Add option="-m32"/>
+          <Add option="-O0"/>
+          <Add option="-std=c++14"/>
+          <Add option="-mstackrealign"/>
+          <Add option="-g"/>
+          <Add directory="."/>
+          <Add directory="C:/JUCE_5.4.7/modules/juce_audio_processors/format_types/VST3_SDK"/>
+          <Add directory="C:/VST_SDK/VST2_SDK"/>
+          <Add directory="../../JuceLibraryCode"/>
+          <Add directory="C:/JUCE_5.4.7/modules"/>
+        </Compiler>
+        <Linker>
+          <Add option="&quot;bin/Debug/MidiNoteToText.lib&quot;"/>
+          <Add option="-m32"/>
+          <Add library="winmm"/>
+          <Add library="uuid"/>
+          <Add library="wsock32"/>
+          <Add library="wininet"/>
+          <Add library="version"/>
+          <Add library="ole32"/>
+          <Add library="ws2_32"/>
+          <Add library="oleaut32"/>
+          <Add library="imm32"/>
+          <Add library="comdlg32"/>
+          <Add library="shlwapi"/>
+          <Add library="rpcrt4"/>
+          <Add library="opengl32"/>
+          <Add directory="&quot;bin/Debug&quot;"/>
         </Linker>
       </Target>
       <Target title="Standalone Plugin | Debug">
@@ -87,6 +143,8 @@
           <Add option="-mstackrealign"/>
           <Add option="-g"/>
           <Add directory="."/>
+          <Add directory="C:/JUCE_5.4.7/modules/juce_audio_processors/format_types/VST3_SDK"/>
+          <Add directory="C:/VST_SDK/VST2_SDK"/>
           <Add directory="../../JuceLibraryCode"/>
           <Add directory="C:/JUCE_5.4.7/modules"/>
         </Compiler>
@@ -123,7 +181,7 @@
           <Add option="-DJUCER_CODEBLOCKS_WINDOWS_8F9AFD66=1"/>
           <Add option="-DJUCE_APP_VERSION=1.0.0"/>
           <Add option="-DJUCE_APP_VERSION_HEX=0x10000"/>
-          <Add option="-DJucePlugin_Build_VST=0"/>
+          <Add option="-DJucePlugin_Build_VST=1"/>
           <Add option="-DJucePlugin_Build_VST3=0"/>
           <Add option="-DJucePlugin_Build_AU=0"/>
           <Add option="-DJucePlugin_Build_AUv3=0"/>
@@ -137,6 +195,8 @@
           <Add option="-std=c++14"/>
           <Add option="-mstackrealign"/>
           <Add directory="."/>
+          <Add directory="C:/JUCE_5.4.7/modules/juce_audio_processors/format_types/VST3_SDK"/>
+          <Add directory="C:/VST_SDK/VST2_SDK"/>
           <Add directory="../../JuceLibraryCode"/>
           <Add directory="C:/JUCE_5.4.7/modules"/>
         </Compiler>
@@ -156,6 +216,59 @@
           <Add library="shlwapi"/>
           <Add library="rpcrt4"/>
           <Add library="opengl32"/>
+        </Linker>
+      </Target>
+      <Target title="VST | Release">
+        <Option output="bin/Release/MidiNoteToText.dll"
+                prefix_auto="0"
+                extension_auto="0"/>
+        <Option object_output="obj/Release"/>
+        <Option type="3"/>
+        <Option compiler="gcc"/>
+        <Option external_deps="bin/Release/MidiNoteToText.lib"/>
+        <Compiler>
+          <Add option="-D__MINGW__=1"/>
+          <Add option="-D__MINGW_EXTENSION="/>
+          <Add option="-DNDEBUG=1"/>
+          <Add option="-DJUCER_CODEBLOCKS_WINDOWS_8F9AFD66=1"/>
+          <Add option="-DJUCE_APP_VERSION=1.0.0"/>
+          <Add option="-DJUCE_APP_VERSION_HEX=0x10000"/>
+          <Add option="-DJucePlugin_Build_VST=1"/>
+          <Add option="-DJucePlugin_Build_VST3=0"/>
+          <Add option="-DJucePlugin_Build_AU=0"/>
+          <Add option="-DJucePlugin_Build_AUv3=0"/>
+          <Add option="-DJucePlugin_Build_RTAS=0"/>
+          <Add option="-DJucePlugin_Build_AAX=0"/>
+          <Add option="-DJucePlugin_Build_Standalone=0"/>
+          <Add option="-DJucePlugin_Build_Unity=0"/>
+          <Add option="-m32"/>
+          <Add option="-O3"/>
+          <Add option="-std=c++14"/>
+          <Add option="-mstackrealign"/>
+          <Add directory="."/>
+          <Add directory="C:/JUCE_5.4.7/modules/juce_audio_processors/format_types/VST3_SDK"/>
+          <Add directory="C:/VST_SDK/VST2_SDK"/>
+          <Add directory="../../JuceLibraryCode"/>
+          <Add directory="C:/JUCE_5.4.7/modules"/>
+        </Compiler>
+        <Linker>
+          <Add option="&quot;bin/Release/MidiNoteToText.lib&quot;"/>
+          <Add option="-m32"/>
+          <Add option="-s"/>
+          <Add library="winmm"/>
+          <Add library="uuid"/>
+          <Add library="wsock32"/>
+          <Add library="wininet"/>
+          <Add library="version"/>
+          <Add library="ole32"/>
+          <Add library="ws2_32"/>
+          <Add library="oleaut32"/>
+          <Add library="imm32"/>
+          <Add library="comdlg32"/>
+          <Add library="shlwapi"/>
+          <Add library="rpcrt4"/>
+          <Add library="opengl32"/>
+          <Add directory="&quot;bin/Release&quot;"/>
         </Linker>
       </Target>
       <Target title="Standalone Plugin | Release">
@@ -186,6 +299,8 @@
           <Add option="-std=c++14"/>
           <Add option="-mstackrealign"/>
           <Add directory="."/>
+          <Add directory="C:/JUCE_5.4.7/modules/juce_audio_processors/format_types/VST3_SDK"/>
+          <Add directory="C:/VST_SDK/VST2_SDK"/>
           <Add directory="../../JuceLibraryCode"/>
           <Add directory="C:/JUCE_5.4.7/modules"/>
         </Compiler>
@@ -212,9 +327,9 @@
     </Build>
     <VirtualTargets>
       <Add alias="Debug"
-           targets="Shared Code | Debug;Standalone Plugin | Debug"/>
+           targets="Shared Code | Debug;VST | Debug;Standalone Plugin | Debug"/>
       <Add alias="Release"
-           targets="Shared Code | Release;Standalone Plugin | Release"/>
+           targets="Shared Code | Release;VST | Release;Standalone Plugin | Release"/>
     </VirtualTargets>
     <Compiler>
       <Add option="-Wall"/>
@@ -227,6 +342,16 @@
       <Add library="kernel32"/>
       <Add library="comctl32"/>
     </Linker>
+    <Unit filename="../../Source/Midi/MidiReceiver.cpp">
+      <Option target="Shared Code | Debug"/>
+      <Option target="Shared Code | Release"/>
+    </Unit>
+    <Unit filename="../../Source/Midi/MidiReceiver.h">
+      <Option target="Shared Code | Debug"/>
+      <Option target="Shared Code | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
     <Unit filename="../../Source/UI/PaceParametersComponent.cpp">
       <Option target="Shared Code | Debug"/>
       <Option target="Shared Code | Release"/>
@@ -8908,6 +9033,10 @@
     <Unit filename="../../JuceLibraryCode/include_juce_audio_plugin_client_utils.cpp">
       <Option target="Shared Code | Debug"/>
       <Option target="Shared Code | Release"/>
+    </Unit>
+    <Unit filename="../../JuceLibraryCode/include_juce_audio_plugin_client_VST2.cpp">
+      <Option target="VST | Debug"/>
+      <Option target="VST | Release"/>
     </Unit>
     <Unit filename="../../JuceLibraryCode/include_juce_audio_processors.cpp">
       <Option target="Shared Code | Debug"/>
