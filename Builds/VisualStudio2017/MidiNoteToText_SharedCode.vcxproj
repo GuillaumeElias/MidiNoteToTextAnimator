@@ -137,6 +137,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\Midi\MidiReceiver.cpp"/>
+    <ClCompile Include="..\..\Source\UI\AnimatedTextUpdater.cpp"/>
     <ClCompile Include="..\..\Source\UI\PaceParametersComponent.cpp"/>
     <ClCompile Include="..\..\Source\UI\AnimatedTextComponent.cpp"/>
     <ClCompile Include="..\..\Source\PluginProcessor.cpp"/>
@@ -1992,6 +1993,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\Midi\MidiReceiver.h"/>
+    <ClInclude Include="..\..\Source\UI\AnimatedTextUpdater.h"/>
     <ClInclude Include="..\..\Source\UI\PaceParametersComponent.h"/>
     <ClInclude Include="..\..\Source\UI\AnimatedTextComponent.h"/>
     <ClInclude Include="..\..\Source\PluginProcessor.h"/>

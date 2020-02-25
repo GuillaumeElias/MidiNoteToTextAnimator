@@ -8,6 +8,12 @@ MidiReceiver::MidiReceiver()
 }
 
 //=====================================================================================
+void MidiReceiver::setAnimatedTextUpdater(std::unique_ptr<AnimatedTextUpdater> updater)
+{
+    animatedTextUpdater = std::move(updater);
+}
+
+//=====================================================================================
 void MidiReceiver::handleMidiMessage(MidiBuffer & midiBuffer)
 {
 
@@ -20,7 +26,18 @@ void MidiReceiver::handleMidiMessage(MidiBuffer & midiBuffer)
         if (midiEvent.isNoteOn())
         {
             Logger::outputDebugString("note on");
+            notifyUpdater();
         }
+    }
+}
+
+
+//=====================================================================================
+void MidiReceiver::notifyUpdater()
+{
+    if (animatedTextUpdater)
+    {
+        animatedTextUpdater->triggerAsyncUpdate();
     }
 }
 

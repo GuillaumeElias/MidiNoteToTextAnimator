@@ -62,3 +62,9 @@ void MidiNoteToTextAudioProcessorEditor::resized()
     animatedText.setBounds(0, 150, getWidth(), 20);
 
 }
+
+//==============================================================================
+AnimatedTextComponent * MidiNoteToTextAudioProcessorEditor::getAnimatedTextComponent()
+{
+    return &animatedText;
+}

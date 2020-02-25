@@ -17,6 +17,8 @@ public:
 
     void textEditorTextChanged(TextEditor &) override;
 
+    AnimatedTextComponent * getAnimatedTextComponent();
+
 private:
     
     MidiNoteToTextAudioProcessor& processor;

@@ -168,7 +168,12 @@ bool MidiNoteToTextAudioProcessor::hasEditor() const
 //==============================================================================
 AudioProcessorEditor* MidiNoteToTextAudioProcessor::createEditor()
 {
-    return new MidiNoteToTextAudioProcessorEditor (*this, parameters);
+    MidiNoteToTextAudioProcessorEditor * editor = new MidiNoteToTextAudioProcessorEditor(*this, parameters);
+
+    //initialize and link updaters to components
+    midiReceiver.setAnimatedTextUpdater(std::make_unique<AnimatedTextUpdater>(editor->getAnimatedTextComponent()));
+
+    return editor;
 }
 
 //==============================================================================

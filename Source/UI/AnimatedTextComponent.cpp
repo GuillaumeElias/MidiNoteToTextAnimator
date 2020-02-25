@@ -6,10 +6,10 @@
 AnimatedTextComponent::AnimatedTextComponent(AudioProcessorValueTreeState & vts)
     : valueTreeState(vts)
 {
-    mode = *valueTreeState.getRawParameterValue("mode");
+    mode = static_cast<int>(*valueTreeState.getRawParameterValue("mode"));
     valueTreeState.addParameterListener("mode", this);
 
-    int speed = *valueTreeState.getRawParameterValue("fixedSpeed");
+    int speed = static_cast<int>(*valueTreeState.getRawParameterValue("fixedSpeed"));
     valueTreeState.addParameterListener("fixedSpeed", this);
     setFramesPerSecond(speed);
 }
@@ -57,6 +57,15 @@ void AnimatedTextComponent::setText(String txt)
 }
 
 //==============================================================================
+void AnimatedTextComponent::onMidiNoteIn()
+{
+    if (mode.get() == 1 && isShowing())
+    {
+        showNextLetter();
+    }
+}
+
+//==============================================================================
 void AnimatedTextComponent::showNextLetter()
 {
     if (counter < text.length())
@@ -70,10 +79,10 @@ void AnimatedTextComponent::parameterChanged(const String &parameterID, float ne
 {
     if (parameterID == "mode")
     {
-        mode.set(newValue);
+        mode.set(static_cast<int>(newValue));
     }
     else if (parameterID == "fixedSpeed")
     {
-        setFramesPerSecond(newValue);
+        setFramesPerSecond(static_cast<int>(newValue));
     }
 }

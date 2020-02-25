@@ -14,11 +14,12 @@ public:
     void update() override;
 
     void setText(String text);
-    void showNextLetter();
+    void onMidiNoteIn();
 
 private:
 
     void parameterChanged(const String &parameterID, float newValue);
+    void showNextLetter();
 
     AudioProcessorValueTreeState & valueTreeState;
 
