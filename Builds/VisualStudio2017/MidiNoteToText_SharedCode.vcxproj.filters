@@ -11,6 +11,9 @@
     <Filter Include="MidiNoteToText\Source">
       <UniqueIdentifier>{45405597-CAA0-036F-1CCB-3CEC7EDB68AD}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MidiNoteToText\Test">
+      <UniqueIdentifier>{32B76EEE-DEA5-59F9-0B89-FD93FD55F899}</UniqueIdentifier>
+    </Filter>
     <Filter Include="MidiNoteToText">
       <UniqueIdentifier>{B20F94EE-D2E7-F72E-76FB-6AF6C3D6A261}</UniqueIdentifier>
     </Filter>
@@ -468,6 +471,12 @@
     </ClCompile>
     <ClCompile Include="..\..\Source\PluginEditor.cpp">
       <Filter>MidiNoteToText\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Test\AllTests.cpp">
+      <Filter>MidiNoteToText\Test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Test\MidiReceiverTest.cpp">
+      <Filter>MidiNoteToText\Test</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\..\..\..\JUCE_5.4.7\modules\juce_audio_basics\buffers\juce_AudioChannelSet.cpp">
       <Filter>JUCE Modules\juce_audio_basics\buffers</Filter>

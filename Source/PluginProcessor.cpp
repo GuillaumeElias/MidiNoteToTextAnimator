@@ -1,3 +1,7 @@
+#ifdef JUCE_TEST
+    #include "../Test/AllTests.cpp"
+#endif
+
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
 
@@ -199,5 +203,9 @@ void MidiNoteToTextAudioProcessor::setStateInformation (const void* data, int si
 // This creates new instances of the plugin..
 AudioProcessor* JUCE_CALLTYPE createPluginFilter()
 {
+    #ifdef JUCE_TEST
+        test::RunAllTests();
+    #endif
+
     return new MidiNoteToTextAudioProcessor();
 }
