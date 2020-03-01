@@ -8,9 +8,9 @@ MidiReceiver::MidiReceiver()
 }
 
 //=====================================================================================
-void MidiReceiver::setAnimatedTextUpdater(std::unique_ptr<AnimatedTextUpdater> updater)
+void MidiReceiver::setComponentMidiUpdater(std::unique_ptr<ComponentMidiUpdater> updater)
 {
-    animatedTextUpdater = std::move(updater);
+    midiComponentUpdater = std::move(updater);
 }
 
 //=====================================================================================
@@ -35,9 +35,9 @@ void MidiReceiver::handleMidiMessage(MidiBuffer & midiBuffer)
 //=====================================================================================
 void MidiReceiver::notifyUpdater()
 {
-    if (animatedTextUpdater)
+    if (midiComponentUpdater)
     {
-        animatedTextUpdater->triggerAsyncUpdate();
+        midiComponentUpdater->triggerAsyncUpdate();
     }
 }
 

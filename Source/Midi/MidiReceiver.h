@@ -2,7 +2,7 @@
 
 #pragma once
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "../UI/AnimatedTextUpdater.h"
+#include "../UI/ComponentMidiUpdater.h"
 
 class MidiReceiver : public ReferenceCountedObject
 {
@@ -10,12 +10,12 @@ class MidiReceiver : public ReferenceCountedObject
 public:
     MidiReceiver();
 
-    void setAnimatedTextUpdater(std::unique_ptr<AnimatedTextUpdater> updater);
+    void setComponentMidiUpdater(std::unique_ptr<ComponentMidiUpdater> updater);
 
     void handleMidiMessage(MidiBuffer& midiBuffer);
 
 private:
     void notifyUpdater();
 
-    std::unique_ptr<AnimatedTextUpdater> animatedTextUpdater;
+    std::unique_ptr<ComponentMidiUpdater> midiComponentUpdater;
 };

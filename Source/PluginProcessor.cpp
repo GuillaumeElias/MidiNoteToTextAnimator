@@ -175,7 +175,7 @@ AudioProcessorEditor* MidiNoteToTextAudioProcessor::createEditor()
     MidiNoteToTextAudioProcessorEditor * editor = new MidiNoteToTextAudioProcessorEditor(*this, parameters);
 
     //initialize and link updaters to components
-    midiReceiver.setAnimatedTextUpdater(std::make_unique<AnimatedTextUpdater>(editor->getAnimatedTextComponent()));
+    midiReceiver.setComponentMidiUpdater(std::make_unique<ComponentMidiUpdater>(editor->getAnimatedTextComponent()));
 
     return editor;
 }

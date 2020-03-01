@@ -2,8 +2,9 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "../PluginProcessor.h"
+#include "UpdatableComponent.h"
 
-class AnimatedTextComponent  : public AnimatedAppComponent, private AudioProcessorValueTreeState::Listener
+class AnimatedTextComponent  : public AnimatedAppComponent, public UpdatableComponent, private AudioProcessorValueTreeState::Listener
 {
 public:
     AnimatedTextComponent(AudioProcessorValueTreeState & vts);
@@ -14,7 +15,7 @@ public:
     void update() override;
 
     void setText(String text);
-    void onMidiNoteIn();
+    void onMidiNoteIn() override;
 
 private:
 

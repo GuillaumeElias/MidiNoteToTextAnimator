@@ -7,19 +7,16 @@
 namespace test
 {
 
-    class MockAnimatedTextComponent : public AnimatedTextComponent
-    {
-
-    };
-
-    class MockAnimatedTextUpdater : public AnimatedTextUpdater
+    class MockComponent : public UpdatableComponent
     {
     public:
-        MockAnimatedTextUpdater(AnimatedTextComponent * c) : AnimatedTextUpdater(c){ };
+        int call_count = 0;
+
+        MockComponent() = default;
+        void onMidiNoteIn() { call_count++;  };
     };
 
-    
-
+ 
     class MidiReceiverTest : public UnitTest
     {
     public:
@@ -27,17 +24,21 @@ namespace test
 
         void runTest() override
         {
-            beginTest("Part 1");
 
+            //set up
             MidiReceiver midiReceiver;
+            MockComponent component;
+            midiReceiver.setComponentMidiUpdater(std::make_unique<ComponentMidiUpdater>(&component));
 
-            /*AudioProcessorValueTreeState * vts = new AudioProcessorValueTreeState();
 
-            AnimatedTextComponent * c = new AnimatedTextComponent(*vts);
-            
-            midiReceiver.setAnimatedTextUpdater(std::make_unique<MockAnimatedTextUpdater>(c));*/
+            //call with empty buffer
 
-            expect(1);
+            beginTest("Empty midi buffer test");
+
+            MidiBuffer midiBuffer;
+            midiReceiver.handleMidiMessage(midiBuffer);
+
+            expect(component.call_count == 0);
 
         }
     };

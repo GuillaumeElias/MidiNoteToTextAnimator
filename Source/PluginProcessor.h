@@ -2,7 +2,7 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "Midi/MidiReceiver.h"
-#include "UI/AnimatedTextUpdater.h"
+#include "UI/ComponentMidiUpdater.h"
 
 //==============================================================================
 /**

@@ -352,11 +352,17 @@
       <Option compile="0"/>
       <Option link="0"/>
     </Unit>
-    <Unit filename="../../Source/UI/AnimatedTextUpdater.cpp">
+    <Unit filename="../../Source/UI/UpdatableComponent.h">
+      <Option target="Shared Code | Debug"/>
+      <Option target="Shared Code | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../Source/UI/ComponentMidiUpdater.cpp">
       <Option target="Shared Code | Debug"/>
       <Option target="Shared Code | Release"/>
     </Unit>
-    <Unit filename="../../Source/UI/AnimatedTextUpdater.h">
+    <Unit filename="../../Source/UI/ComponentMidiUpdater.h">
       <Option target="Shared Code | Debug"/>
       <Option target="Shared Code | Release"/>
       <Option compile="0"/>

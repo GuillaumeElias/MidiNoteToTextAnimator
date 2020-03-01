@@ -16,10 +16,12 @@
         <FILE id="tWjOLX" name="MidiReceiver.h" compile="0" resource="0" file="Source/Midi/MidiReceiver.h"/>
       </GROUP>
       <GROUP id="{21CCE0B2-36D2-D437-2574-67B2B3B41FF4}" name="UI">
-        <FILE id="gAw3AV" name="AnimatedTextUpdater.cpp" compile="1" resource="0"
-              file="Source/UI/AnimatedTextUpdater.cpp"/>
-        <FILE id="bTV8iD" name="AnimatedTextUpdater.h" compile="0" resource="0"
-              file="Source/UI/AnimatedTextUpdater.h"/>
+        <FILE id="xpY58Q" name="UpdatableComponent.h" compile="0" resource="0"
+              file="Source/UI/UpdatableComponent.h"/>
+        <FILE id="gAw3AV" name="ComponentMidiUpdater.cpp" compile="1" resource="0"
+              file="Source/UI/ComponentMidiUpdater.cpp"/>
+        <FILE id="bTV8iD" name="ComponentMidiUpdater.h" compile="0" resource="0"
+              file="Source/UI/ComponentMidiUpdater.h"/>
         <FILE id="J39A7W" name="PaceParametersComponent.cpp" compile="1" resource="0"
               file="Source/UI/PaceParametersComponent.cpp"/>
         <FILE id="mZT1Kz" name="PaceParametersComponent.h" compile="0" resource="0"

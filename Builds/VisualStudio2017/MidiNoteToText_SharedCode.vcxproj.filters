@@ -457,7 +457,7 @@
     <ClCompile Include="..\..\Source\Midi\MidiReceiver.cpp">
       <Filter>MidiNoteToText\Source\Midi</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\UI\AnimatedTextUpdater.cpp">
+    <ClCompile Include="..\..\Source\UI\ComponentMidiUpdater.cpp">
       <Filter>MidiNoteToText\Source\UI</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\UI\PaceParametersComponent.cpp">
@@ -2487,7 +2487,10 @@
     <ClInclude Include="..\..\Source\Midi\MidiReceiver.h">
       <Filter>MidiNoteToText\Source\Midi</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\UI\AnimatedTextUpdater.h">
+    <ClInclude Include="..\..\Source\UI\UpdatableComponent.h">
+      <Filter>MidiNoteToText\Source\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\UI\ComponentMidiUpdater.h">
       <Filter>MidiNoteToText\Source\UI</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\UI\PaceParametersComponent.h">
