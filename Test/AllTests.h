@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "MidiReceiverTest.cpp"
+#include "MidiReceiverTest.h"
 
 namespace test
 {

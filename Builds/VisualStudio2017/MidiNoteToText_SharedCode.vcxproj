@@ -199,8 +199,6 @@
     <ClCompile Include="..\..\Source\UI\AnimatedTextComponent.cpp"/>
     <ClCompile Include="..\..\Source\PluginProcessor.cpp"/>
     <ClCompile Include="..\..\Source\PluginEditor.cpp"/>
-    <ClCompile Include="..\..\Test\AllTests.cpp"/>
-    <ClCompile Include="..\..\Test\MidiReceiverTest.cpp"/>
     <ClCompile Include="..\..\..\..\..\..\..\JUCE_5.4.7\modules\juce_audio_basics\buffers\juce_AudioChannelSet.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
@@ -2058,6 +2056,8 @@
     <ClInclude Include="..\..\Source\UI\AnimatedTextComponent.h"/>
     <ClInclude Include="..\..\Source\PluginProcessor.h"/>
     <ClInclude Include="..\..\Source\PluginEditor.h"/>
+    <ClInclude Include="..\..\Test\AllTests.h"/>
+    <ClInclude Include="..\..\Test\MidiReceiverTest.h"/>
     <ClInclude Include="..\..\..\..\..\..\..\JUCE_5.4.7\modules\juce_audio_basics\audio_play_head\juce_AudioPlayHead.h"/>
     <ClInclude Include="..\..\..\..\..\..\..\JUCE_5.4.7\modules\juce_audio_basics\buffers\juce_AudioChannelSet.h"/>
     <ClInclude Include="..\..\..\..\..\..\..\JUCE_5.4.7\modules\juce_audio_basics\buffers\juce_AudioDataConverters.h"/>

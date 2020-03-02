@@ -472,12 +472,6 @@
     <ClCompile Include="..\..\Source\PluginEditor.cpp">
       <Filter>MidiNoteToText\Source</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Test\AllTests.cpp">
-      <Filter>MidiNoteToText\Test</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Test\MidiReceiverTest.cpp">
-      <Filter>MidiNoteToText\Test</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\..\..\..\JUCE_5.4.7\modules\juce_audio_basics\buffers\juce_AudioChannelSet.cpp">
       <Filter>JUCE Modules\juce_audio_basics\buffers</Filter>
     </ClCompile>
@@ -2504,6 +2498,12 @@
     </ClInclude>
     <ClInclude Include="..\..\Source\PluginEditor.h">
       <Filter>MidiNoteToText\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Test\AllTests.h">
+      <Filter>MidiNoteToText\Test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Test\MidiReceiverTest.h">
+      <Filter>MidiNoteToText\Test</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\..\..\..\JUCE_5.4.7\modules\juce_audio_basics\audio_play_head\juce_AudioPlayHead.h">
       <Filter>JUCE Modules\juce_audio_basics\audio_play_head</Filter>

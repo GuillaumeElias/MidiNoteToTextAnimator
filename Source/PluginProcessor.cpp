@@ -1,5 +1,5 @@
 #ifdef JUCE_TEST
-    #include "../Test/AllTests.cpp"
+    #include "../Test/AllTests.h"
 #endif
 
 #include "PluginProcessor.h"

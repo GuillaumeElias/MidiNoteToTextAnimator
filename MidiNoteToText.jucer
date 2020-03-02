@@ -40,9 +40,9 @@
       <FILE id="L01bJO" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
     </GROUP>
     <GROUP id="{CA44814D-FE1C-4CF4-9804-7BCB3465AF34}" name="Test">
-      <FILE id="qAvEBq" name="AllTests.cpp" compile="1" resource="0" file="Test/AllTests.cpp"/>
-      <FILE id="MPK4hY" name="MidiReceiverTest.cpp" compile="1" resource="0"
-            file="Test/MidiReceiverTest.cpp"/>
+      <FILE id="qAvEBq" name="AllTests.h" compile="1" resource="0" file="Test/AllTests.h"/>
+      <FILE id="MPK4hY" name="MidiReceiverTest.h" compile="0" resource="0"
+            file="Test/MidiReceiverTest.h"/>
     </GROUP>
   </MAINGROUP>
   <EXPORTFORMATS>
