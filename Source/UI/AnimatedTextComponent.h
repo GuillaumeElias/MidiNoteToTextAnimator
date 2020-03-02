@@ -28,6 +28,7 @@ private:
     void showNextLetter();
 
     void syncCurrentFont();
+    void syncJustification();
 
     AudioProcessorValueTreeState & valueTreeState;
 
@@ -36,7 +37,10 @@ private:
 
     Atomic<int> mode;
 
+    Justification currentJustification;
     Font currentFont;
+    Colour currentBackgroundColour;
+    Colour currentTextColour;
 
     ComboBox fontSizeSelector;
     std::unique_ptr<AudioProcessorValueTreeState::ComboBoxAttachment> fontSizeComboboxAttachment;
@@ -46,6 +50,9 @@ private:
 
     ComboBox backgroundColorSelector;
     std::unique_ptr<AudioProcessorValueTreeState::ComboBoxAttachment> backgroundColorComboboxAttachment;
+
+    ComboBox justificationSelector;
+    std::unique_ptr<AudioProcessorValueTreeState::ComboBoxAttachment> justificationComboboxAttachment;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AnimatedTextComponent)
 };

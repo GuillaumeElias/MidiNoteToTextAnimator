@@ -20,30 +20,35 @@ MidiNoteToTextAudioProcessor::MidiNoteToTextAudioProcessor()
     , parameters(*this, nullptr, Identifier("MidiNoteToText"),
         {
             std::make_unique<AudioParameterInt>("mode",            // parameter ID
-                                                   "Mode",            // parameter name
+                                                   "Mode",         // parameter name
                                                    1,              // minimum value
                                                    2,              // maximum value
                                                    1),             // default value
-            std::make_unique<AudioParameterInt>("fixedSpeed",      // parameter ID
-                                                  "FixedSpeed",     // parameter name
-                                                   0,              // minimum value
-                                                   100,              // maximum value
-                                                   10),             // default value
-           std::make_unique<AudioParameterInt>("fontSize",      // parameter ID
-                                                  "FontSize",     // parameter name
-                                                   8,              // minimum value
-                                                   62,              // maximum value
-                                                   12),             // default value
-          std::make_unique<AudioParameterInt>("fontType",      // parameter ID
-                                                  "FontType",     // parameter name
-                                                   1,              // minimum value
-                                                   FONTS.size(),              // maximum value
-                                                   1),             // default value
-         std::make_unique<AudioParameterInt>("textBackgroundColor",      // parameter ID
-                                                  "TextBackgroundColor",     // parameter name
-                                                   1,              // minimum value
-                                                   3,              // maximum value
-                                                   1)             // default value
+            std::make_unique<AudioParameterInt>("fixedSpeed",
+                                                  "FixedSpeed",
+                                                   0,
+                                                   100,
+                                                   10),
+            std::make_unique<AudioParameterInt>("fontSize",
+                                                  "FontSize",
+                                                   8,
+                                                   62,
+                                                   12),
+            std::make_unique<AudioParameterInt>("fontType",
+                                                  "FontType",
+                                                   1,
+                                                   FONTS.size(),
+                                                   1),
+            std::make_unique<AudioParameterInt>("textBackgroundColor",
+                                                  "TextBackgroundColor",
+                                                   1,
+                                                   3,
+                                                   1),
+            std::make_unique<AudioParameterInt>("textJustification",
+                                                  "textJustification",
+                                                   1,
+                                                   JUSTIFICATIONS.size(),
+                                                   1)
         })
 #endif
 {

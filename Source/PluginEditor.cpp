@@ -16,6 +16,7 @@ MidiNoteToTextAudioProcessorEditor::MidiNoteToTextAudioProcessorEditor (MidiNote
     //text input
     textInput.addListener(this);
     textInput.setText("Enter text here");
+    textInput.setMultiLine(true);
 
     //input label
     inputLabel.setText("Text input:", dontSendNotification);
@@ -57,7 +58,7 @@ void MidiNoteToTextAudioProcessorEditor::resized()
 
     paceParameters.setBounds(5, 5, getWidth(), 50);
 
-    textInput.setBounds(100, 60, getWidth() - 110, 20);
+    textInput.setBounds(100, 60, getWidth() - 110, 50);
 
     animatedText.setBounds(0, 150, getWidth(), getHeight() - 50);
 

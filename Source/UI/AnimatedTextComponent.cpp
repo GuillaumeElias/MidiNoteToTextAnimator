@@ -7,6 +7,9 @@
 //==============================================================================
 AnimatedTextComponent::AnimatedTextComponent(AudioProcessorValueTreeState & vts)
     : valueTreeState(vts)
+    , currentJustification(Justification::Flags::left)
+    , currentBackgroundColour(getLookAndFeel().findColour(ResizableWindow::backgroundColourId))
+    , currentTextColour(Colours::white)
 {
     mode = static_cast<int>(*valueTreeState.getRawParameterValue("mode"));
     valueTreeState.addParameterListener("mode", this);
@@ -16,6 +19,8 @@ AnimatedTextComponent::AnimatedTextComponent(AudioProcessorValueTreeState & vts)
     setFramesPerSecond(speed);
 
     syncCurrentFont();
+    syncJustification();
+
    
     //font size
     NormalisableRange<float> range = valueTreeState.getParameterRange("fontSize");
@@ -33,14 +38,19 @@ AnimatedTextComponent::AnimatedTextComponent(AudioProcessorValueTreeState & vts)
     fontTypeSelector.addListener(this);
 
     //background color
-    backgroundColorSelector.addItem("Black", 1);
-    backgroundColorSelector.addItem("White", 2);
+    backgroundColorSelector.addItemList(COLOURS, 1);
     backgroundColorComboboxAttachment = std::make_unique<AudioProcessorValueTreeState::ComboBoxAttachment>(valueTreeState, "textBackgroundColor", backgroundColorSelector);
     backgroundColorSelector.addListener(this);
+
+    //justification
+    justificationSelector.addItemList(JUSTIFICATIONS, 1);
+    justificationComboboxAttachment = std::make_unique<AudioProcessorValueTreeState::ComboBoxAttachment>(valueTreeState, "textJustification", justificationSelector);
+    justificationSelector.addListener(this);
 
     addAndMakeVisible(fontSizeSelector);
     addAndMakeVisible(fontTypeSelector);
     addAndMakeVisible(backgroundColorSelector);
+    addAndMakeVisible(justificationSelector);
 }
 
 //==============================================================================
@@ -52,15 +62,15 @@ AnimatedTextComponent::~AnimatedTextComponent()
 void AnimatedTextComponent::paint (Graphics& g)
 {
 
-    g.fillAll (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));   // clear the background
+    g.fillAll (currentBackgroundColour);
 
     g.setColour (Colours::grey);
-    g.drawRect (getLocalBounds(), 1);   // draw an outline around the component
+    g.drawRect (getLocalBounds(), 1);
 
-    g.setColour (Colours::white);
+    g.setColour (currentTextColour);
     g.setFont (currentFont);
-    g.drawText (text.substring(0,counter), getLocalBounds(),
-                Justification::centred, true);   // draw some placeholder text
+    g.drawText (text.substring(0,counter), getLocalBounds().withTop(30),
+        currentJustification, true);
 }
 
 //==============================================================================
@@ -81,6 +91,7 @@ void AnimatedTextComponent::resized()
 
     backgroundColorSelector.setBounds(205, 5, 100, 20);
 
+    justificationSelector.setBounds(305, 5, 100, 20);
 }
 
 //==============================================================================
@@ -135,6 +146,14 @@ void AnimatedTextComponent::comboBoxChanged(ComboBox * comboBoxThatHasChanged)
         String fontType = FONTS[fontTypeSelector.getSelectedItemIndex()];
         currentFont.setTypefaceName(fontType);
     }
+    else if (comboBoxThatHasChanged == &justificationSelector)
+    {
+        currentJustification = Justification(JUSTIFICATIONS_ARRAY_FLAGS[justificationSelector.getSelectedItemIndex()]);
+    }
+    else if (comboBoxThatHasChanged == &backgroundColorSelector)
+    {
+        //TODO
+    }
 
     repaint();
 }
@@ -147,4 +166,12 @@ void AnimatedTextComponent::syncCurrentFont()
 
     currentFont.setTypefaceName(typefaceName);
     currentFont.setHeight(fontHeight);
+}
+
+//==============================================================================
+void AnimatedTextComponent::syncJustification()
+{
+    int index = *valueTreeState.getRawParameterValue("textJustification") - 1;
+
+    currentJustification = Justification(JUSTIFICATIONS_ARRAY_FLAGS[index]);
 }
