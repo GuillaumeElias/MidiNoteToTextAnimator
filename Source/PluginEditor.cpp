@@ -10,12 +10,12 @@ MidiNoteToTextAudioProcessorEditor::MidiNoteToTextAudioProcessorEditor (MidiNote
     , animatedText(vts)
 {
 
-    setSize (400, 300);
+    setSize (800, 600);
 
     
     //text input
     textInput.addListener(this);
-
+    textInput.setText("Enter text here");
 
     //input label
     inputLabel.setText("Text input:", dontSendNotification);
@@ -59,7 +59,7 @@ void MidiNoteToTextAudioProcessorEditor::resized()
 
     textInput.setBounds(100, 60, getWidth() - 110, 20);
 
-    animatedText.setBounds(0, 150, getWidth(), 20);
+    animatedText.setBounds(0, 150, getWidth(), getHeight() - 50);
 
 }
 

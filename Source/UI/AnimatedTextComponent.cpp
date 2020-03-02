@@ -1,6 +1,8 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "AnimatedTextComponent.h"
+#include "../Constants.h"
+
 
 //==============================================================================
 AnimatedTextComponent::AnimatedTextComponent(AudioProcessorValueTreeState & vts)
@@ -12,6 +14,33 @@ AnimatedTextComponent::AnimatedTextComponent(AudioProcessorValueTreeState & vts)
     int speed = static_cast<int>(*valueTreeState.getRawParameterValue("fixedSpeed"));
     valueTreeState.addParameterListener("fixedSpeed", this);
     setFramesPerSecond(speed);
+
+    syncCurrentFont();
+   
+    //font size
+    NormalisableRange<float> range = valueTreeState.getParameterRange("fontSize");
+    for (int i = range.getRange().getStart(); i < range.getRange().getEnd(); i+= 2)
+    {
+        fontSizeSelector.addItem(String(i), i);
+    }
+    
+    fontSizeComboboxAttachment = std::make_unique<AudioProcessorValueTreeState::ComboBoxAttachment>(valueTreeState, "fontSize", fontSizeSelector);
+    fontSizeSelector.addListener(this);
+
+    //font type
+    fontTypeSelector.addItemList(FONTS, 1);
+    fontTypeComboboxAttachment = std::make_unique<AudioProcessorValueTreeState::ComboBoxAttachment>(valueTreeState, "fontType", fontTypeSelector);
+    fontTypeSelector.addListener(this);
+
+    //background color
+    backgroundColorSelector.addItem("Black", 1);
+    backgroundColorSelector.addItem("White", 2);
+    backgroundColorComboboxAttachment = std::make_unique<AudioProcessorValueTreeState::ComboBoxAttachment>(valueTreeState, "textBackgroundColor", backgroundColorSelector);
+    backgroundColorSelector.addListener(this);
+
+    addAndMakeVisible(fontSizeSelector);
+    addAndMakeVisible(fontTypeSelector);
+    addAndMakeVisible(backgroundColorSelector);
 }
 
 //==============================================================================
@@ -29,7 +58,7 @@ void AnimatedTextComponent::paint (Graphics& g)
     g.drawRect (getLocalBounds(), 1);   // draw an outline around the component
 
     g.setColour (Colours::white);
-    g.setFont (14.0f);
+    g.setFont (currentFont);
     g.drawText (text.substring(0,counter), getLocalBounds(),
                 Justification::centred, true);   // draw some placeholder text
 }
@@ -46,7 +75,12 @@ void AnimatedTextComponent::update()
 //==============================================================================
 void AnimatedTextComponent::resized()
 {
-   
+    fontSizeSelector.setBounds(5, 5, 100, 20);
+
+    fontTypeSelector.setBounds(105, 5, 100, 20);
+
+    backgroundColorSelector.setBounds(205, 5, 100, 20);
+
 }
 
 //==============================================================================
@@ -85,4 +119,32 @@ void AnimatedTextComponent::parameterChanged(const String &parameterID, float ne
     {
         setFramesPerSecond(static_cast<int>(newValue));
     }
+}
+
+//==============================================================================
+void AnimatedTextComponent::comboBoxChanged(ComboBox * comboBoxThatHasChanged)
+{
+    
+    if (comboBoxThatHasChanged == &fontSizeSelector)
+    {
+        int fontHeight = fontSizeSelector.getSelectedIdAsValue().getValue();
+        currentFont.setHeight(fontHeight);
+    }
+    else if (comboBoxThatHasChanged == &fontTypeSelector)
+    {
+        String fontType = FONTS[fontTypeSelector.getSelectedItemIndex()];
+        currentFont.setTypefaceName(fontType);
+    }
+
+    repaint();
+}
+
+//==============================================================================
+void AnimatedTextComponent::syncCurrentFont()
+{
+    String typefaceName = FONTS[*valueTreeState.getRawParameterValue("fontType") - 1];
+    int fontHeight = *valueTreeState.getRawParameterValue("fontSize");
+
+    currentFont.setTypefaceName(typefaceName);
+    currentFont.setHeight(fontHeight);
 }

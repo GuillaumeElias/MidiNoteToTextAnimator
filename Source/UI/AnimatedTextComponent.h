@@ -4,7 +4,10 @@
 #include "../PluginProcessor.h"
 #include "UpdatableComponent.h"
 
-class AnimatedTextComponent  : public AnimatedAppComponent, public UpdatableComponent, private AudioProcessorValueTreeState::Listener
+class AnimatedTextComponent  : public AnimatedAppComponent, 
+                               public UpdatableComponent, 
+                               private AudioProcessorValueTreeState::Listener,
+                               private ComboBox::Listener
 {
 public:
     AnimatedTextComponent(AudioProcessorValueTreeState & vts);
@@ -19,8 +22,12 @@ public:
 
 private:
 
-    void parameterChanged(const String &parameterID, float newValue);
+    void parameterChanged(const String &parameterID, float newValue) override;
+    void comboBoxChanged(ComboBox *comboBoxThatHasChanged) override;
+
     void showNextLetter();
+
+    void syncCurrentFont();
 
     AudioProcessorValueTreeState & valueTreeState;
 
@@ -28,6 +35,17 @@ private:
     String text;
 
     Atomic<int> mode;
+
+    Font currentFont;
+
+    ComboBox fontSizeSelector;
+    std::unique_ptr<AudioProcessorValueTreeState::ComboBoxAttachment> fontSizeComboboxAttachment;
+
+    ComboBox fontTypeSelector;
+    std::unique_ptr<AudioProcessorValueTreeState::ComboBoxAttachment> fontTypeComboboxAttachment;
+
+    ComboBox backgroundColorSelector;
+    std::unique_ptr<AudioProcessorValueTreeState::ComboBoxAttachment> backgroundColorComboboxAttachment;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AnimatedTextComponent)
 };

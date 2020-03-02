@@ -2049,6 +2049,7 @@
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_video.cpp"/>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\Constants.h"/>
     <ClInclude Include="..\..\Source\Midi\MidiReceiver.h"/>
     <ClInclude Include="..\..\Source\UI\UpdatableComponent.h"/>
     <ClInclude Include="..\..\Source\UI\ComponentMidiUpdater.h"/>

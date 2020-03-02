@@ -4,6 +4,7 @@
 
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
+#include "Constants.h"
 
 //==============================================================================
 MidiNoteToTextAudioProcessor::MidiNoteToTextAudioProcessor()
@@ -27,7 +28,22 @@ MidiNoteToTextAudioProcessor::MidiNoteToTextAudioProcessor()
                                                   "FixedSpeed",     // parameter name
                                                    0,              // minimum value
                                                    100,              // maximum value
-                                                   10)             // default value
+                                                   10),             // default value
+           std::make_unique<AudioParameterInt>("fontSize",      // parameter ID
+                                                  "FontSize",     // parameter name
+                                                   8,              // minimum value
+                                                   62,              // maximum value
+                                                   12),             // default value
+          std::make_unique<AudioParameterInt>("fontType",      // parameter ID
+                                                  "FontType",     // parameter name
+                                                   1,              // minimum value
+                                                   FONTS.size(),              // maximum value
+                                                   1),             // default value
+         std::make_unique<AudioParameterInt>("textBackgroundColor",      // parameter ID
+                                                  "TextBackgroundColor",     // parameter name
+                                                   1,              // minimum value
+                                                   3,              // maximum value
+                                                   1)             // default value
         })
 #endif
 {

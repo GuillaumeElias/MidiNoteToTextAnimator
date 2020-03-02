@@ -2478,6 +2478,9 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\Constants.h">
+      <Filter>MidiNoteToText\Source</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\Midi\MidiReceiver.h">
       <Filter>MidiNoteToText\Source\Midi</Filter>
     </ClInclude>
