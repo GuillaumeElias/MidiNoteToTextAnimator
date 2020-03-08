@@ -57,11 +57,23 @@ AnimatedTextComponent::AnimatedTextComponent(AudioProcessorValueTreeState & vts)
     justificationComboboxAttachment = std::make_unique<AudioProcessorValueTreeState::ComboBoxAttachment>(valueTreeState, "textJustification", justificationSelector);
     justificationSelector.addListener(this);
 
+    //bold
+    boldCheckbox.setButtonText("Bold");
+    boldCheckbox.setToggleState(valueTreeState.getParameterAsValue("textBold").getValue(), false);
+    boldCheckbox.onClick = [this]{ updateToggleState(&boldCheckbox); };
+
+    //italic
+    italicCheckbox.setButtonText("Italic");
+    italicCheckbox.setToggleState(valueTreeState.getParameterAsValue("textItalic").getValue(), false);
+    italicCheckbox.onClick = [this] { updateToggleState(&italicCheckbox); };
+
     addAndMakeVisible(fontSizeSelector);
     addAndMakeVisible(fontTypeSelector);
     addAndMakeVisible(textColorButton);
     addAndMakeVisible(backgroundColorButton);
     addAndMakeVisible(justificationSelector);
+    addAndMakeVisible(boldCheckbox);
+    addAndMakeVisible(italicCheckbox);
 }
 
 //==============================================================================
@@ -100,13 +112,17 @@ void AnimatedTextComponent::resized()
 
     fontTypeSelector.setBounds(105, 5, 100, 20);
 
-    textColorSelector.setBounds(205, 5, 150, 150);
+    textColorSelector.setBounds(205, 5, 160, 180);
     textColorButton.setBounds(205, 5, 100, 20);
 
-    backgroundColorSelector.setBounds(305, 5, 150, 150);
+    backgroundColorSelector.setBounds(305, 5, 160, 180);
     backgroundColorButton.setBounds(305, 5, 100, 20);
 
     justificationSelector.setBounds(405, 5, 100, 20);
+
+    boldCheckbox.setBounds(505, 5, 50, 20);
+
+    italicCheckbox.setBounds(555, 5, 50, 20);
 }
 
 //==============================================================================
@@ -175,10 +191,13 @@ void AnimatedTextComponent::changeListenerCallback(ChangeBroadcaster * source)
     if (source == &textColorSelector)
     {
         currentTextColour = textColorSelector.getCurrentColour();
+        textColorButton.setColour(TextButton::textColourOffId, currentTextColour);
     }
     else if (source == &backgroundColorSelector)
     {
         currentBackgroundColour = backgroundColorSelector.getCurrentColour();
+        backgroundColorButton.setColour(TextButton::textColourOffId, currentBackgroundColour);
+
     }
 
     repaint();
@@ -206,9 +225,13 @@ void AnimatedTextComponent::syncCurrentFont()
 {
     String typefaceName = FONTS[*valueTreeState.getRawParameterValue("fontType") - 1];
     int fontHeight = *valueTreeState.getRawParameterValue("fontSize");
+    bool bold = valueTreeState.getParameterAsValue("textBold").getValue();
+    bool italic = valueTreeState.getParameterAsValue("textItalic").getValue();
 
     currentFont.setTypefaceName(typefaceName);
     currentFont.setHeight(fontHeight);
+    currentFont.setBold(bold);
+    currentFont.setItalic(italic);
 }
 
 //==============================================================================
@@ -217,4 +240,23 @@ void AnimatedTextComponent::syncJustification()
     int index = *valueTreeState.getRawParameterValue("textJustification") - 1;
 
     currentJustification = Justification(JUSTIFICATIONS_ARRAY_FLAGS[index]);
+}
+
+//==============================================================================
+void AnimatedTextComponent::updateToggleState(ToggleButton * button)
+{
+    if (button == &boldCheckbox)
+    {
+        bool bold = boldCheckbox.getToggleState();
+        currentFont.setBold(bold);
+        valueTreeState.getParameter("textBold")->setValueNotifyingHost(bold);
+    }
+    else if (button == &italicCheckbox)
+    {
+        bool italic = italicCheckbox.getToggleState();
+        currentFont.setItalic(italic);
+        valueTreeState.getParameter("textItalic")->setValueNotifyingHost(italic);
+    }
+
+    repaint();
 }

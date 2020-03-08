@@ -34,6 +34,8 @@ private:
     void syncCurrentFont();
     void syncJustification();
 
+    void updateToggleState(ToggleButton* button);
+
     AudioProcessorValueTreeState & valueTreeState;
 
     int counter;
@@ -60,6 +62,9 @@ private:
 
     ComboBox justificationSelector;
     std::unique_ptr<AudioProcessorValueTreeState::ComboBoxAttachment> justificationComboboxAttachment;
+
+    ToggleButton boldCheckbox;
+    ToggleButton italicCheckbox;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AnimatedTextComponent)
 };

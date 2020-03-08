@@ -40,10 +40,16 @@ MidiNoteToTextAudioProcessor::MidiNoteToTextAudioProcessor()
                                                    FONTS.size(),
                                                    1),
             std::make_unique<AudioParameterInt>("textJustification",
-                                                  "textJustification",
+                                                  "TextJustification",
                                                    1,
                                                    JUSTIFICATIONS.size(),
-                                                   1)
+                                                   1),
+            std::make_unique<AudioParameterBool>("textBold",
+                                                  "TextBold",
+                                                   false),
+            std::make_unique<AudioParameterBool>("textItalic",
+                                                  "TextItalic",
+                                                   false)
         })
 #endif
 {
