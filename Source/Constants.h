@@ -12,11 +12,6 @@ static const StringArray FONTS = {
     "Verdana"
 };
 
-static const StringArray COLOURS = {
-    "white",
-    "black"
-};
-
 static const StringArray JUSTIFICATIONS = {
     "left",
     "right",

@@ -7,7 +7,9 @@
 class AnimatedTextComponent  : public AnimatedAppComponent, 
                                public UpdatableComponent, 
                                private AudioProcessorValueTreeState::Listener,
-                               private ComboBox::Listener
+                               private ComboBox::Listener,
+                               private ChangeListener,
+                               private MouseListener
 {
 public:
     AnimatedTextComponent(AudioProcessorValueTreeState & vts);
@@ -24,6 +26,8 @@ private:
 
     void parameterChanged(const String &parameterID, float newValue) override;
     void comboBoxChanged(ComboBox *comboBoxThatHasChanged) override;
+    void changeListenerCallback(ChangeBroadcaster* source) override;
+    void mouseDown(const MouseEvent& event) override;
 
     void showNextLetter();
 
@@ -48,8 +52,11 @@ private:
     ComboBox fontTypeSelector;
     std::unique_ptr<AudioProcessorValueTreeState::ComboBoxAttachment> fontTypeComboboxAttachment;
 
-    ComboBox backgroundColorSelector;
-    std::unique_ptr<AudioProcessorValueTreeState::ComboBoxAttachment> backgroundColorComboboxAttachment;
+    TextButton textColorButton;
+    ColourSelector textColorSelector;
+
+    TextButton backgroundColorButton;
+    ColourSelector backgroundColorSelector;
 
     ComboBox justificationSelector;
     std::unique_ptr<AudioProcessorValueTreeState::ComboBoxAttachment> justificationComboboxAttachment;

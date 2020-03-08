@@ -37,10 +37,20 @@ AnimatedTextComponent::AnimatedTextComponent(AudioProcessorValueTreeState & vts)
     fontTypeComboboxAttachment = std::make_unique<AudioProcessorValueTreeState::ComboBoxAttachment>(valueTreeState, "fontType", fontTypeSelector);
     fontTypeSelector.addListener(this);
 
+    //text color
+    textColorButton.setButtonText("text color");
+    textColorButton.addMouseListener(this, true);
+
+    textColorSelector.setName("text");
+    textColorSelector.addChangeListener(this);
+
     //background color
-    backgroundColorSelector.addItemList(COLOURS, 1);
-    backgroundColorComboboxAttachment = std::make_unique<AudioProcessorValueTreeState::ComboBoxAttachment>(valueTreeState, "textBackgroundColor", backgroundColorSelector);
-    backgroundColorSelector.addListener(this);
+    backgroundColorButton.setButtonText("background color");
+    backgroundColorButton.addMouseListener(this, true);
+
+    backgroundColorSelector.setName("background");
+    backgroundColorSelector.setCurrentColour(findColour(TextButton::buttonColourId));
+    backgroundColorSelector.addChangeListener(this);
 
     //justification
     justificationSelector.addItemList(JUSTIFICATIONS, 1);
@@ -49,7 +59,8 @@ AnimatedTextComponent::AnimatedTextComponent(AudioProcessorValueTreeState & vts)
 
     addAndMakeVisible(fontSizeSelector);
     addAndMakeVisible(fontTypeSelector);
-    addAndMakeVisible(backgroundColorSelector);
+    addAndMakeVisible(textColorButton);
+    addAndMakeVisible(backgroundColorButton);
     addAndMakeVisible(justificationSelector);
 }
 
@@ -89,9 +100,13 @@ void AnimatedTextComponent::resized()
 
     fontTypeSelector.setBounds(105, 5, 100, 20);
 
-    backgroundColorSelector.setBounds(205, 5, 100, 20);
+    textColorSelector.setBounds(205, 5, 150, 150);
+    textColorButton.setBounds(205, 5, 100, 20);
 
-    justificationSelector.setBounds(305, 5, 100, 20);
+    backgroundColorSelector.setBounds(305, 5, 150, 150);
+    backgroundColorButton.setBounds(305, 5, 100, 20);
+
+    justificationSelector.setBounds(405, 5, 100, 20);
 }
 
 //==============================================================================
@@ -150,12 +165,40 @@ void AnimatedTextComponent::comboBoxChanged(ComboBox * comboBoxThatHasChanged)
     {
         currentJustification = Justification(JUSTIFICATIONS_ARRAY_FLAGS[justificationSelector.getSelectedItemIndex()]);
     }
-    else if (comboBoxThatHasChanged == &backgroundColorSelector)
+
+    repaint();
+}
+
+//==============================================================================
+void AnimatedTextComponent::changeListenerCallback(ChangeBroadcaster * source)
+{
+    if (source == &textColorSelector)
     {
-        //TODO
+        currentTextColour = textColorSelector.getCurrentColour();
+    }
+    else if (source == &backgroundColorSelector)
+    {
+        currentBackgroundColour = backgroundColorSelector.getCurrentColour();
     }
 
     repaint();
+}
+
+//==============================================================================
+void AnimatedTextComponent::mouseDown(const MouseEvent & event)
+{
+    if (event.originalComponent == &backgroundColorButton)
+    {
+        //CallOutBox::launchAsynchronously(&backgroundColorSelector, backgroundColorSelector.getBounds(), this); //TODO subclass CallOutBox and use this
+
+        CallOutBox callOut(backgroundColorSelector, backgroundColorButton.getBounds().expanded(1,2), this);
+        callOut.runModalLoop();
+    }
+    else if (event.originalComponent == &textColorButton)
+    {
+        CallOutBox callOut(textColorSelector, textColorButton.getBounds().expanded(1, 2), this);
+        callOut.runModalLoop();
+    }
 }
 
 //==============================================================================
