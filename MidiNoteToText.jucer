@@ -9,6 +9,10 @@
               pluginAAXDisableMultiMono="0" buildVST="1" buildVST3="1" buildAU="0"
               buildAUv3="0" buildRTAS="0" buildAAX="0" enableIAA="0">
   <MAINGROUP id="uBOffc" name="MidiNoteToText">
+    <GROUP id="{E88E5D8A-4FE3-455E-27BA-4877C0CAF8E5}" name="Resource">
+      <FILE id="rpFst7" name="fullscbutton.png" compile="0" resource="1"
+            file="Resource/fullscbutton.png"/>
+    </GROUP>
     <GROUP id="{0EEF2AFB-AFD5-1432-9A38-B2CEB8E812C6}" name="Source">
       <FILE id="lf2TYQ" name="Constants.h" compile="0" resource="0" file="Source/Constants.h"/>
       <GROUP id="{1C40F053-4490-3FC3-057F-15339E218396}" name="Midi">

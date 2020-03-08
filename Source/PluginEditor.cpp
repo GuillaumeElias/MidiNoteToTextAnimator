@@ -24,9 +24,15 @@ MidiNoteToTextAudioProcessorEditor::MidiNoteToTextAudioProcessorEditor (MidiNote
     inputLabel.setColour(Label::textColourId, Colours::orange);
     inputLabel.setJustificationType(Justification::right);
 
-    //displaylabel
-
+    //animated text
     animatedText.setText(textInput.getText());
+    animatedText.setOnFullScreenLambda([&](bool fullscreen) { 
+        paceParameters.setVisible(!fullscreen);
+        textInput.setVisible(!fullscreen);
+        inputLabel.setVisible(!fullscreen);
+        animatedText.setBounds(0, fullscreen ? 0 : 150, getWidth(), getHeight() - (fullscreen ? 0 : 50));
+    } );
+
 
     addAndMakeVisible(paceParameters);
     addAndMakeVisible(inputLabel);

@@ -20,6 +20,8 @@ public:
     void update() override;
 
     void setText(String text);
+    void setOnFullScreenLambda(std::function<void(bool)> lambda);
+
     void onMidiNoteIn() override;
 
 private:
@@ -35,6 +37,7 @@ private:
     void syncJustification();
 
     void updateToggleState(ToggleButton* button);
+    void switchToFullScreen();
 
     AudioProcessorValueTreeState & valueTreeState;
 
@@ -42,6 +45,7 @@ private:
     String text;
 
     Atomic<int> mode;
+    bool fullscreen;
 
     Justification currentJustification;
     Font currentFont;
@@ -65,6 +69,9 @@ private:
 
     ToggleButton boldCheckbox;
     ToggleButton italicCheckbox;
+
+    ImageButton fullScreenButton;
+    std::function<void(bool)> onFullScreenLambda;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AnimatedTextComponent)
 };

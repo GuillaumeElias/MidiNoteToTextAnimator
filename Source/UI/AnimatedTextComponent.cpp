@@ -10,6 +10,7 @@ AnimatedTextComponent::AnimatedTextComponent(AudioProcessorValueTreeState & vts)
     , currentJustification(Justification::Flags::left)
     , currentBackgroundColour(getLookAndFeel().findColour(ResizableWindow::backgroundColourId))
     , currentTextColour(Colours::white)
+    , fullscreen(false)
 {
     mode = static_cast<int>(*valueTreeState.getRawParameterValue("mode"));
     valueTreeState.addParameterListener("mode", this);
@@ -67,6 +68,15 @@ AnimatedTextComponent::AnimatedTextComponent(AudioProcessorValueTreeState & vts)
     italicCheckbox.setToggleState(valueTreeState.getParameterAsValue("textItalic").getValue(), false);
     italicCheckbox.onClick = [this] { updateToggleState(&italicCheckbox); };
 
+    //fullcreen button
+    Image image = ImageFileFormat::loadFrom(BinaryData::fullscbutton_png, (size_t)BinaryData::fullscbutton_pngSize);
+    fullScreenButton.setImages(true, true, true,
+        image, 1.0f, Colours::transparentWhite,
+        image, 0.6f, Colours::transparentWhite,
+        image, 0.3f, Colours::transparentWhite,
+        0.0f);
+    fullScreenButton.onClick = [this] { switchToFullScreen(); };
+
     addAndMakeVisible(fontSizeSelector);
     addAndMakeVisible(fontTypeSelector);
     addAndMakeVisible(textColorButton);
@@ -74,6 +84,7 @@ AnimatedTextComponent::AnimatedTextComponent(AudioProcessorValueTreeState & vts)
     addAndMakeVisible(justificationSelector);
     addAndMakeVisible(boldCheckbox);
     addAndMakeVisible(italicCheckbox);
+    addAndMakeVisible(fullScreenButton);
 }
 
 //==============================================================================
@@ -123,6 +134,8 @@ void AnimatedTextComponent::resized()
     boldCheckbox.setBounds(505, 5, 50, 20);
 
     italicCheckbox.setBounds(555, 5, 50, 20);
+
+    fullScreenButton.setBounds(getWidth() - 25, 5, 20, 20);
 }
 
 //==============================================================================
@@ -130,6 +143,12 @@ void AnimatedTextComponent::setText(String txt)
 {
     this->counter = 0;
     this->text = txt;
+}
+
+//==============================================================================
+void AnimatedTextComponent::setOnFullScreenLambda(std::function<void (bool)> lambda)
+{
+    onFullScreenLambda = lambda;
 }
 
 //==============================================================================
@@ -259,4 +278,25 @@ void AnimatedTextComponent::updateToggleState(ToggleButton * button)
     }
 
     repaint();
+}
+
+//==============================================================================
+void AnimatedTextComponent::switchToFullScreen()
+{
+    fullscreen = !fullscreen;
+
+    if (onFullScreenLambda)
+    {
+        onFullScreenLambda(fullscreen);
+    }
+
+    fontSizeSelector.setVisible(!fullscreen);
+    fontTypeSelector.setVisible(!fullscreen);
+    textColorSelector.setVisible(!fullscreen);
+    textColorButton.setVisible(!fullscreen);
+    backgroundColorSelector.setVisible(!fullscreen);
+    backgroundColorButton.setVisible(!fullscreen);
+    justificationSelector.setVisible(!fullscreen);
+    boldCheckbox.setVisible(!fullscreen);
+    italicCheckbox.setVisible(!fullscreen);
 }
