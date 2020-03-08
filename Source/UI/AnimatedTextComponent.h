@@ -38,6 +38,7 @@ private:
 
     void updateToggleState(ToggleButton* button);
     void switchToFullScreen();
+    void setFullscreenButtonIcon(const Image & icon);
 
     AudioProcessorValueTreeState & valueTreeState;
 
@@ -70,6 +71,8 @@ private:
     ToggleButton boldCheckbox;
     ToggleButton italicCheckbox;
 
+    Image fullscreenIcon;
+    Image fullscreenIconBack;
     ImageButton fullScreenButton;
     std::function<void(bool)> onFullScreenLambda;
 

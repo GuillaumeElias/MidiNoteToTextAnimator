@@ -2807,6 +2807,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\Resource\fullscbutton.png"/>
+    <None Include="..\..\Resource\fullscbuttonback.png"/>
     <None Include="..\..\..\..\..\..\..\JUCE_5.4.7\modules\juce_audio_formats\codecs\flac\Flac Licence.txt"/>
     <None Include="..\..\..\..\..\..\..\JUCE_5.4.7\modules\juce_audio_formats\codecs\oggvorbis\Ogg Vorbis Licence.txt"/>
     <None Include="..\..\..\..\..\..\..\JUCE_5.4.7\modules\juce_audio_processors\format_types\VST3_SDK\base\LICENSE.txt"/>

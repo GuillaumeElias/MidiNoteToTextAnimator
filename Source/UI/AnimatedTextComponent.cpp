@@ -11,6 +11,8 @@ AnimatedTextComponent::AnimatedTextComponent(AudioProcessorValueTreeState & vts)
     , currentBackgroundColour(getLookAndFeel().findColour(ResizableWindow::backgroundColourId))
     , currentTextColour(Colours::white)
     , fullscreen(false)
+    , fullscreenIcon(ImageFileFormat::loadFrom(BinaryData::fullscbutton_png, (size_t)BinaryData::fullscbutton_pngSize))
+    , fullscreenIconBack(ImageFileFormat::loadFrom(BinaryData::fullscbuttonback_png, (size_t)BinaryData::fullscbuttonback_pngSize))
 {
     mode = static_cast<int>(*valueTreeState.getRawParameterValue("mode"));
     valueTreeState.addParameterListener("mode", this);
@@ -69,12 +71,7 @@ AnimatedTextComponent::AnimatedTextComponent(AudioProcessorValueTreeState & vts)
     italicCheckbox.onClick = [this] { updateToggleState(&italicCheckbox); };
 
     //fullcreen button
-    Image image = ImageFileFormat::loadFrom(BinaryData::fullscbutton_png, (size_t)BinaryData::fullscbutton_pngSize);
-    fullScreenButton.setImages(true, true, true,
-        image, 1.0f, Colours::transparentWhite,
-        image, 0.6f, Colours::transparentWhite,
-        image, 0.3f, Colours::transparentWhite,
-        0.0f);
+    setFullscreenButtonIcon(fullscreenIcon);
     fullScreenButton.onClick = [this] { switchToFullScreen(); };
 
     addAndMakeVisible(fontSizeSelector);
@@ -216,7 +213,7 @@ void AnimatedTextComponent::changeListenerCallback(ChangeBroadcaster * source)
     {
         currentBackgroundColour = backgroundColorSelector.getCurrentColour();
         backgroundColorButton.setColour(TextButton::textColourOffId, currentBackgroundColour);
-
+        fullScreenButton.setOpaque(currentBackgroundColour.getBrightness() > 0.95); //quick workaround to show the button if background is white
     }
 
     repaint();
@@ -299,4 +296,27 @@ void AnimatedTextComponent::switchToFullScreen()
     justificationSelector.setVisible(!fullscreen);
     boldCheckbox.setVisible(!fullscreen);
     italicCheckbox.setVisible(!fullscreen);
+
+    if (fullscreen)
+    {
+        setFullscreenButtonIcon(fullscreenIconBack);
+    }
+    else
+    {
+        setFullscreenButtonIcon(fullscreenIcon);
+    }
+}
+
+//==============================================================================
+void AnimatedTextComponent::setFullscreenButtonIcon(const Image & icon)
+{
+    Rectangle<int> oldBounds = fullScreenButton.getBounds();
+
+    fullScreenButton.setImages(true, true, true,
+        icon, 1.0f, Colours::transparentWhite,
+        icon, 0.6f, Colours::transparentWhite,
+        icon, 0.3f, Colours::transparentWhite,
+        0.0f);
+
+    fullScreenButton.setBounds(oldBounds); //need to reset the bounds to what they were before changing the image otherwise it will adapt to the new size
 }
