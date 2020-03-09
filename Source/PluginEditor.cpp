@@ -30,7 +30,7 @@ MidiNoteToTextAudioProcessorEditor::MidiNoteToTextAudioProcessorEditor (MidiNote
         paceParameters.setVisible(!fullscreen);
         textInput.setVisible(!fullscreen);
         inputLabel.setVisible(!fullscreen);
-        animatedText.setBounds(0, fullscreen ? 0 : 150, getWidth(), getHeight() - (fullscreen ? 0 : 50));
+        animatedText.setBounds(0, fullscreen ? 0 : 150, getWidth(), getHeight() - (fullscreen ? 0 : 150));
     } );
 
 
@@ -66,7 +66,7 @@ void MidiNoteToTextAudioProcessorEditor::resized()
 
     textInput.setBounds(100, 60, getWidth() - 110, 50);
 
-    animatedText.setBounds(0, 150, getWidth(), getHeight() - 50);
+    animatedText.setBounds(0, 150, getWidth(), getHeight() - 150);
 
 }
 
