@@ -37,10 +37,10 @@ profile
 **/VisualStudio[0-9]*/x64
 **/Builds/x64
 **/.vs
-**/CodeBlocks/bin
-**/CodeBlocks/obj
-**/CodeBlocks/*.depend
-**/CodeBlocks/*.layout
+**/CodeBlocks*/bin
+**/CodeBlocks*/obj
+**/CodeBlocks*/*.depend
+**/CodeBlocks*/*.layout
 **/Builds/Android/.gradle
 **/Builds/Android/.idea
 **/Builds/Android/build

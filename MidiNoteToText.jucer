@@ -68,7 +68,6 @@
         <MODULEPATH id="juce_gui_basics" path="../../../../../JUCE_5.4.7/modules"/>
         <MODULEPATH id="juce_gui_extra" path="../../../../../JUCE_5.4.7/modules"/>
         <MODULEPATH id="juce_cryptography" path="../../../../../JUCE_5.4.7/modules"/>
-        <MODULEPATH id="juce_video" path="../../../../../JUCE_5.4.7/modules"/>
         <MODULEPATH id="juce_opengl" path="../../../../../JUCE_5.4.7/modules"/>
         <MODULEPATH id="juce_audio_basics" path="..\..\..\..\..\JUCE_5.4.7\modules"/>
         <MODULEPATH id="juce_audio_devices" path="../../../../../JUCE_5.4.7/modules"/>
@@ -91,7 +90,6 @@
         <MODULEPATH id="juce_gui_basics" path="../../../../../JUCE_5.4.7/modules"/>
         <MODULEPATH id="juce_gui_extra" path="../../../../../JUCE_5.4.7/modules"/>
         <MODULEPATH id="juce_cryptography" path="../../../../../JUCE_5.4.7/modules"/>
-        <MODULEPATH id="juce_video" path="../../../../../JUCE_5.4.7/modules"/>
         <MODULEPATH id="juce_opengl" path="../../../../../JUCE_5.4.7/modules"/>
         <MODULEPATH id="juce_audio_basics" path="../../../../../JUCE_5.4.7/modules"/>
         <MODULEPATH id="juce_audio_devices" path="../../../../../JUCE_5.4.7/modules"/>
@@ -118,7 +116,6 @@
     <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="juce_opengl" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
-    <MODULE id="juce_video" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
   </MODULES>
   <JUCEOPTIONS/>
   <LIVE_SETTINGS>

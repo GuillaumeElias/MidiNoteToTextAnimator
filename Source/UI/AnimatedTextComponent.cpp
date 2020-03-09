@@ -24,14 +24,14 @@ AnimatedTextComponent::AnimatedTextComponent(AudioProcessorValueTreeState & vts)
     syncCurrentFont();
     syncJustification();
 
-   
+
     //font size
     NormalisableRange<float> range = valueTreeState.getParameterRange("fontSize");
     for (int i = range.getRange().getStart(); i < range.getRange().getEnd(); i+= 2)
     {
         fontSizeSelector.addItem(String(i), i);
     }
-    
+
     fontSizeComboboxAttachment = std::make_unique<AudioProcessorValueTreeState::ComboBoxAttachment>(valueTreeState, "fontSize", fontSizeSelector);
     fontSizeSelector.addListener(this);
 
@@ -42,7 +42,7 @@ AnimatedTextComponent::AnimatedTextComponent(AudioProcessorValueTreeState & vts)
 
     //text color
     textColorButton.setButtonText("text color");
-    textColorButton.addMouseListener(this, true);
+    textColorButton.addMouseListener(static_cast<MouseListener*>(this), true);
 
     textColorSelector.setName("text");
     textColorSelector.addChangeListener(this);
@@ -136,7 +136,7 @@ void AnimatedTextComponent::resized()
 }
 
 //==============================================================================
-void AnimatedTextComponent::setText(String txt) 
+void AnimatedTextComponent::setText(String txt)
 {
     this->counter = 0;
     this->text = txt;
@@ -182,7 +182,7 @@ void AnimatedTextComponent::parameterChanged(const String &parameterID, float ne
 //==============================================================================
 void AnimatedTextComponent::comboBoxChanged(ComboBox * comboBoxThatHasChanged)
 {
-    
+
     if (comboBoxThatHasChanged == &fontSizeSelector)
     {
         int fontHeight = fontSizeSelector.getSelectedIdAsValue().getValue();

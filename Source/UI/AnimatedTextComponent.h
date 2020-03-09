@@ -8,8 +8,7 @@ class AnimatedTextComponent  : public AnimatedAppComponent,
                                public UpdatableComponent, 
                                private AudioProcessorValueTreeState::Listener,
                                private ComboBox::Listener,
-                               private ChangeListener,
-                               private MouseListener
+                               private ChangeListener
 {
 public:
     AnimatedTextComponent(AudioProcessorValueTreeState & vts);
