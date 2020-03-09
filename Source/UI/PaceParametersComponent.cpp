@@ -36,9 +36,14 @@ PaceParametersComponent::PaceParametersComponent(AudioProcessorValueTreeState & 
         fixedSpeedInput.setVisible(true);
     }
 
+    //skip spaces button
+    skipSpacesCheckbox.setButtonText("Skip spaces");
+    skipSpacesCheckbox.setToggleState(valueTreeState.getParameterAsValue("skipSpaces").getValue(), false);
+    skipSpacesCheckbox.onClick = [this] { valueTreeState.getParameter("skipSpaces")->setValueNotifyingHost(skipSpacesCheckbox.getToggleState()); };
+
     addAndMakeVisible(modeSelector);
     addChildComponent(fixedSpeedInput);
-
+    addAndMakeVisible(skipSpacesCheckbox);
     
 }
 
@@ -59,6 +64,7 @@ void PaceParametersComponent::resized()
 {
     modeSelector.setBounds(5, 0, 200, 20);
     fixedSpeedInput.setBounds(230, 0, 30, 20);
+    skipSpacesCheckbox.setBounds(getWidth() - 205, 0, 100, 20);
 }
 
 //==============================================================================

@@ -45,6 +45,7 @@ private:
     String text;
 
     Atomic<int> mode;
+    bool skipSpaces;
     bool fullscreen;
 
     Justification currentJustification;

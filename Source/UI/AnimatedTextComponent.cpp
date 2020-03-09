@@ -16,6 +16,8 @@ AnimatedTextComponent::AnimatedTextComponent(AudioProcessorValueTreeState & vts)
 {
     mode = static_cast<int>(*valueTreeState.getRawParameterValue("mode"));
     valueTreeState.addParameterListener("mode", this);
+    skipSpaces = valueTreeState.getParameterAsValue("skipSpaces").getValue();
+    valueTreeState.addParameterListener("skipSpaces", this);
 
     int speed = static_cast<int>(*valueTreeState.getRawParameterValue("fixedSpeed"));
     valueTreeState.addParameterListener("fixedSpeed", this);
@@ -175,6 +177,11 @@ void AnimatedTextComponent::showNextLetter()
     if (counter < text.length())
     {
         counter++;
+
+        if (skipSpaces && counter < text.length() && text[counter] == ' ') //skip space
+        {
+            counter++;
+        }
     }
 }
 
@@ -188,6 +195,10 @@ void AnimatedTextComponent::parameterChanged(const String &parameterID, float ne
     else if (parameterID == "fixedSpeed")
     {
         setFramesPerSecond(static_cast<int>(newValue));
+    }
+    else if (parameterID == "skipSpaces")
+    {
+        skipSpaces = newValue;
     }
 }
 
