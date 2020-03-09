@@ -14,15 +14,21 @@ AnimatedTextComponent::AnimatedTextComponent(AudioProcessorValueTreeState & vts)
     , fullscreenIcon(ImageFileFormat::loadFrom(BinaryData::fullscbutton_png, (size_t)BinaryData::fullscbutton_pngSize))
     , fullscreenIconBack(ImageFileFormat::loadFrom(BinaryData::fullscbuttonback_png, (size_t)BinaryData::fullscbuttonback_pngSize))
 {
+    //fetch parameters values and setup listeners
     mode = static_cast<int>(*valueTreeState.getRawParameterValue("mode"));
     valueTreeState.addParameterListener("mode", this);
+
     skipSpaces = valueTreeState.getParameterAsValue("skipSpaces").getValue();
     valueTreeState.addParameterListener("skipSpaces", this);
+
+    autoRestart = valueTreeState.getParameterAsValue("autoRestart").getValue();
+    valueTreeState.addParameterListener("autoRestart", this);
 
     int speed = static_cast<int>(*valueTreeState.getRawParameterValue("fixedSpeed"));
     valueTreeState.addParameterListener("fixedSpeed", this);
     setFramesPerSecond(speed);
 
+    //sync font and justification
     syncCurrentFont();
     syncJustification();
 
@@ -183,6 +189,11 @@ void AnimatedTextComponent::showNextLetter()
             counter++;
         }
     }
+
+    if (autoRestart && counter >= text.length()) //restart if at end
+    {
+        counter = 0;
+    }
 }
 
 //==============================================================================
@@ -199,6 +210,10 @@ void AnimatedTextComponent::parameterChanged(const String &parameterID, float ne
     else if (parameterID == "skipSpaces")
     {
         skipSpaces = newValue;
+    }
+    else if (parameterID == "autoRestart")
+    {
+        autoRestart = newValue;
     }
 }
 

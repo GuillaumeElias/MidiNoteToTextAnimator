@@ -46,6 +46,7 @@ private:
 
     Atomic<int> mode;
     bool skipSpaces;
+    bool autoRestart;
     bool fullscreen;
 
     Justification currentJustification;

@@ -41,8 +41,14 @@ PaceParametersComponent::PaceParametersComponent(AudioProcessorValueTreeState & 
     skipSpacesCheckbox.setToggleState(valueTreeState.getParameterAsValue("skipSpaces").getValue(), false);
     skipSpacesCheckbox.onClick = [this] { valueTreeState.getParameter("skipSpaces")->setValueNotifyingHost(skipSpacesCheckbox.getToggleState()); };
 
+    //auto restart button
+    autoRestartCheckbox.setButtonText("Auto-restart");
+    autoRestartCheckbox.setToggleState(valueTreeState.getParameterAsValue("autoRestart").getValue(), false);
+    autoRestartCheckbox.onClick = [this] { valueTreeState.getParameter("autoRestart")->setValueNotifyingHost(autoRestartCheckbox.getToggleState()); };
+
     addAndMakeVisible(modeSelector);
     addChildComponent(fixedSpeedInput);
+    addAndMakeVisible(autoRestartCheckbox);
     addAndMakeVisible(skipSpacesCheckbox);
     
 }
@@ -64,7 +70,8 @@ void PaceParametersComponent::resized()
 {
     modeSelector.setBounds(5, 0, 200, 20);
     fixedSpeedInput.setBounds(230, 0, 30, 20);
-    skipSpacesCheckbox.setBounds(getWidth() - 205, 0, 100, 20);
+    skipSpacesCheckbox.setBounds(getWidth() - 210, 0, 100, 20);
+    autoRestartCheckbox.setBounds(getWidth() - 105, 0, 100, 20);
 }
 
 //==============================================================================

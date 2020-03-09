@@ -52,6 +52,9 @@ MidiNoteToTextAudioProcessor::MidiNoteToTextAudioProcessor()
                                                    false),
             std::make_unique<AudioParameterBool>("skipSpaces",
                                                   "SkipSpaces",
+                                                   true),
+            std::make_unique<AudioParameterBool>("autoRestart",
+                                                  "AutoRestart",
                                                    true)
         })
 #endif
