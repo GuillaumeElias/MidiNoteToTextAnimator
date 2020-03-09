@@ -49,7 +49,10 @@ MidiNoteToTextAudioProcessor::MidiNoteToTextAudioProcessor()
                                                    false),
             std::make_unique<AudioParameterBool>("textItalic",
                                                   "TextItalic",
-                                                   false)
+                                                   false),
+            std::make_unique<AudioParameterBool>("skipSpaces",
+                                                  "skipSpaces",
+                                                   true)
         })
 #endif
 {

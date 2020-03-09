@@ -70,6 +70,8 @@ private:
     ToggleButton boldCheckbox;
     ToggleButton italicCheckbox;
 
+    ImageButton restartButton;
+
     Image fullscreenIcon;
     Image fullscreenIconBack;
     ImageButton fullScreenButton;

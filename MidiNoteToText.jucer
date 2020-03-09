@@ -14,6 +14,8 @@
             file="Resource/fullscbutton.png"/>
       <FILE id="f22ZSH" name="fullscbuttonback.png" compile="0" resource="1"
             file="Resource/fullscbuttonback.png"/>
+      <FILE id="KGhL0N" name="restartbutton.png" compile="0" resource="1"
+            file="Resource/restartbutton.png"/>
     </GROUP>
     <GROUP id="{0EEF2AFB-AFD5-1432-9A38-B2CEB8E812C6}" name="Source">
       <FILE id="lf2TYQ" name="Constants.h" compile="0" resource="0" file="Source/Constants.h"/>

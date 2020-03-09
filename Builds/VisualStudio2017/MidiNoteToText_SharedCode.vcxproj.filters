@@ -4697,6 +4697,9 @@
     <None Include="..\..\Resource\fullscbuttonback.png">
       <Filter>MidiNoteToText\Resource</Filter>
     </None>
+    <None Include="..\..\Resource\restartbutton.png">
+      <Filter>MidiNoteToText\Resource</Filter>
+    </None>
     <None Include="..\..\..\..\..\..\..\JUCE_5.4.7\modules\juce_audio_formats\codecs\flac\Flac Licence.txt">
       <Filter>JUCE Modules\juce_audio_formats\codecs\flac</Filter>
     </None>

@@ -14,8 +14,11 @@ namespace BinaryData
     extern const char*   fullscbuttonback_png;
     const int            fullscbuttonback_pngSize = 620;
 
+    extern const char*   restartbutton_png;
+    const int            restartbutton_pngSize = 545;
+
     // Number of elements in the namedResourceList and originalFileNames arrays.
-    const int namedResourceListSize = 2;
+    const int namedResourceListSize = 3;
 
     // Points to the start of a list of resource names.
     extern const char* namedResourceList[];

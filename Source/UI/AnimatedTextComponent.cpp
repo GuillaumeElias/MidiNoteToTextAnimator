@@ -70,6 +70,15 @@ AnimatedTextComponent::AnimatedTextComponent(AudioProcessorValueTreeState & vts)
     italicCheckbox.setToggleState(valueTreeState.getParameterAsValue("textItalic").getValue(), false);
     italicCheckbox.onClick = [this] { updateToggleState(&italicCheckbox); };
 
+    //restart button
+    Image restartImage = ImageFileFormat::loadFrom(BinaryData::restartbutton_png, (size_t)BinaryData::restartbutton_pngSize);
+    restartButton.setImages(true, true, true,
+        restartImage, 1.0f, Colours::transparentWhite,
+        restartImage, 0.6f, Colours::transparentWhite,
+        restartImage, 0.3f, Colours::transparentWhite,
+        0.0f);
+    restartButton.onClick = [this] { counter = 0; };
+
     //fullcreen button
     setFullscreenButtonIcon(fullscreenIcon);
     fullScreenButton.onClick = [this] { switchToFullScreen(); };
@@ -81,6 +90,7 @@ AnimatedTextComponent::AnimatedTextComponent(AudioProcessorValueTreeState & vts)
     addAndMakeVisible(justificationSelector);
     addAndMakeVisible(boldCheckbox);
     addAndMakeVisible(italicCheckbox);
+    addAndMakeVisible(restartButton);
     addAndMakeVisible(fullScreenButton);
 }
 
@@ -131,6 +141,8 @@ void AnimatedTextComponent::resized()
     boldCheckbox.setBounds(505, 5, 50, 20);
 
     italicCheckbox.setBounds(555, 5, 50, 20);
+
+    restartButton.setBounds(getWidth() - 50, 5, 20, 20);
 
     fullScreenButton.setBounds(getWidth() - 25, 5, 20, 20);
 }
