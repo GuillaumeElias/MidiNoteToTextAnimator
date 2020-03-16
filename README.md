@@ -3,6 +3,8 @@
  
 ## What?
 The idea begind this project is to create an audio plugin (the focus in on VST2/3) capable of showing a text animation based on midi events. This can be useful for live or video making purposes.
+
+![Demo](https://raw.githubusercontent.com/GuillaumeElias/MidiNoteToTextAnimator/master/midinotetotextanimator.gif)
  
 ## Libraries
 This project is using JUCE 5.4.7 under the GPLv3 license.
