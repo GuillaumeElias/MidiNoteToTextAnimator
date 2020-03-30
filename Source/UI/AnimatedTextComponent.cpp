@@ -146,9 +146,9 @@ void AnimatedTextComponent::resized()
 
     justificationSelector.setBounds(405, 5, 100, 20);
 
-    boldCheckbox.setBounds(505, 5, 50, 20);
+    boldCheckbox.setBounds(505, 5, 60, 20);
 
-    italicCheckbox.setBounds(555, 5, 50, 20);
+    italicCheckbox.setBounds(565, 5, 60, 20);
 
     restartButton.setBounds(getWidth() - 50, 5, 20, 20);
 

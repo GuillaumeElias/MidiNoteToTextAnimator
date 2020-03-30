@@ -448,6 +448,9 @@
     <ClCompile Include="..\..\Source\Midi\MidiReceiver.cpp">
       <Filter>MidiNoteToText\Source\Midi</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\UI\PluginLookAndFeel.cpp">
+      <Filter>MidiNoteToText\Source\UI</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\UI\ComponentMidiUpdater.cpp">
       <Filter>MidiNoteToText\Source\UI</Filter>
     </ClCompile>
@@ -2462,6 +2465,9 @@
     </ClInclude>
     <ClInclude Include="..\..\Source\Midi\MidiReceiver.h">
       <Filter>MidiNoteToText\Source\Midi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\UI\PluginLookAndFeel.h">
+      <Filter>MidiNoteToText\Source\UI</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\UI\UpdatableComponent.h">
       <Filter>MidiNoteToText\Source\UI</Filter>
@@ -4691,6 +4697,9 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\Resource\Courier_ Prime_Sans.ttf">
+      <Filter>MidiNoteToText\Resource</Filter>
+    </None>
     <None Include="..\..\Resource\fullscbutton.png">
       <Filter>MidiNoteToText\Resource</Filter>
     </None>

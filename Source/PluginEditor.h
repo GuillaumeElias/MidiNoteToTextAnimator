@@ -4,6 +4,7 @@
 #include "PluginProcessor.h"
 #include "UI/AnimatedTextComponent.h"
 #include "UI/PaceParametersComponent.h"
+#include "UI/PluginLookAndFeel.h"
 
 class MidiNoteToTextAudioProcessorEditor : public AudioProcessorEditor, public TextEditor::Listener
 {
@@ -21,6 +22,8 @@ public:
 
 private:
     
+    PluginLookAndFeel lookAndFeel;
+
     MidiNoteToTextAudioProcessor& processor;
 
     AudioProcessorValueTreeState& valueTreeState;

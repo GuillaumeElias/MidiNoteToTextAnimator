@@ -10,6 +10,8 @@
               buildAUv3="0" buildRTAS="0" buildAAX="0" enableIAA="0">
   <MAINGROUP id="uBOffc" name="MidiNoteToText">
     <GROUP id="{E88E5D8A-4FE3-455E-27BA-4877C0CAF8E5}" name="Resource">
+      <FILE id="AAGzQV" name="Courier_ Prime_Sans.ttf" compile="0" resource="1"
+            file="Resource/Courier_ Prime_Sans.ttf"/>
       <FILE id="rpFst7" name="fullscbutton.png" compile="0" resource="1"
             file="Resource/fullscbutton.png"/>
       <FILE id="f22ZSH" name="fullscbuttonback.png" compile="0" resource="1"
@@ -25,6 +27,10 @@
         <FILE id="tWjOLX" name="MidiReceiver.h" compile="0" resource="0" file="Source/Midi/MidiReceiver.h"/>
       </GROUP>
       <GROUP id="{21CCE0B2-36D2-D437-2574-67B2B3B41FF4}" name="UI">
+        <FILE id="uE5MKC" name="PluginLookAndFeel.cpp" compile="1" resource="0"
+              file="Source/UI/PluginLookAndFeel.cpp"/>
+        <FILE id="lNTRNr" name="PluginLookAndFeel.h" compile="0" resource="0"
+              file="Source/UI/PluginLookAndFeel.h"/>
         <FILE id="xpY58Q" name="UpdatableComponent.h" compile="0" resource="0"
               file="Source/UI/UpdatableComponent.h"/>
         <FILE id="gAw3AV" name="ComponentMidiUpdater.cpp" compile="1" resource="0"

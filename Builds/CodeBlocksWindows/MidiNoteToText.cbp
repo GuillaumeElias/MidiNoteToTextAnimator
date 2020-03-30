@@ -342,6 +342,12 @@
       <Add library="kernel32"/>
       <Add library="comctl32"/>
     </Linker>
+    <Unit filename="../../Resource/Courier_ Prime_Sans.ttf">
+      <Option target="Shared Code | Debug"/>
+      <Option target="Shared Code | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
     <Unit filename="../../Resource/fullscbutton.png">
       <Option target="Shared Code | Debug"/>
       <Option target="Shared Code | Release"/>
@@ -371,6 +377,16 @@
       <Option target="Shared Code | Release"/>
     </Unit>
     <Unit filename="../../Source/Midi/MidiReceiver.h">
+      <Option target="Shared Code | Debug"/>
+      <Option target="Shared Code | Release"/>
+      <Option compile="0"/>
+      <Option link="0"/>
+    </Unit>
+    <Unit filename="../../Source/UI/PluginLookAndFeel.cpp">
+      <Option target="Shared Code | Debug"/>
+      <Option target="Shared Code | Release"/>
+    </Unit>
+    <Unit filename="../../Source/UI/PluginLookAndFeel.h">
       <Option target="Shared Code | Debug"/>
       <Option target="Shared Code | Release"/>
       <Option compile="0"/>

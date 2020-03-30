@@ -256,6 +256,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\Midi\MidiReceiver.cpp"/>
+    <ClCompile Include="..\..\Source\UI\PluginLookAndFeel.cpp"/>
     <ClCompile Include="..\..\Source\UI\ComponentMidiUpdater.cpp"/>
     <ClCompile Include="..\..\Source\UI\PaceParametersComponent.cpp"/>
     <ClCompile Include="..\..\Source\UI\AnimatedTextComponent.cpp"/>
@@ -2104,6 +2105,7 @@
   <ItemGroup>
     <ClInclude Include="..\..\Source\Constants.h"/>
     <ClInclude Include="..\..\Source\Midi\MidiReceiver.h"/>
+    <ClInclude Include="..\..\Source\UI\PluginLookAndFeel.h"/>
     <ClInclude Include="..\..\Source\UI\UpdatableComponent.h"/>
     <ClInclude Include="..\..\Source\UI\ComponentMidiUpdater.h"/>
     <ClInclude Include="..\..\Source\UI\PaceParametersComponent.h"/>
@@ -2848,6 +2850,7 @@
     <ClInclude Include="..\..\JuceLibraryCode\JuceHeader.h"/>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\Resource\Courier_ Prime_Sans.ttf"/>
     <None Include="..\..\Resource\fullscbutton.png"/>
     <None Include="..\..\Resource\fullscbuttonback.png"/>
     <None Include="..\..\Resource\restartbutton.png"/>

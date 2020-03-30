@@ -9,8 +9,8 @@ MidiNoteToTextAudioProcessorEditor::MidiNoteToTextAudioProcessorEditor (MidiNote
     , paceParameters(vts)
     , animatedText(vts)
 {
-
-    setSize (800, 600);
+    setLookAndFeel(&lookAndFeel);
+    setSize(800, 600);
 
     
     //text input
@@ -43,6 +43,7 @@ MidiNoteToTextAudioProcessorEditor::MidiNoteToTextAudioProcessorEditor (MidiNote
 //==============================================================================
 MidiNoteToTextAudioProcessorEditor::~MidiNoteToTextAudioProcessorEditor()
 {
+    setLookAndFeel(nullptr);
     textInput.removeListener(this);
 }
 
